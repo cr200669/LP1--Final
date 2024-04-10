@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <title>Inicio</title>
+</head>
+<body>
+    <div class="top-bar">
+        <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+            <i class="bi bi-moon-fill"></i>
+        </button>
+        <button id="logout-button" onclick="logout()">
+            <i class="bi bi-box-arrow-right"></i>
+        </button>
+    </div>
+
+    <div class="sidebar">
+        <div class="sidebar-content">
+            {% if user.is_superuser %}
+            <a href="{% url 'super_user_home' %}">Inicio</a>
+            {% else %}
+            <a href="{% url 'regular_user_home' %}">Inicio</a>
+            {% endif %}
+            <a href="{% url 'create_ticket' %}">Crear Ticket</a>
+            <a href="{% url 'ticket_list' %}">Ver Tickets</a>
+        </div>
+        <button id="sidebar-toggle" class="sidebar-toggle" onclick="toggleSidebar()">
+            <i class="bi bi-list"></i>
+        </button>
+    </div>
+
+    <div class="container">   
+        <div class="overlay main-overlay">
+            <h1>Bienvenido al sistema.</h1>
+            <div class="overlay clock">
+                <div id="clock"></div>
+            </div>
+            <div class="ticket-counter">
+                <p>Total de tickets creados: {{ tickets.count }}</p>
+            </div>
+        </div>
+        </div>
+    </div>
+
+        <form method="post" action="{% url 'logout' %}" id="logout-form" style="display: none;">
+            {% csrf_token %}
+        </form>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        function toggleDarkMode() {
+            const body = document.querySelector('body');
+            body.classList.toggle('dark-mode');
+        }
+
+        function logout() {
+            document.querySelector('#logout-form').submit();
+        }
+
+        function updateClock() {
+            const now = new Date();
+            const clockElement = document.getElementById('clock');
+            clockElement.textContent = now.toLocaleString();
+        }
+
+        function updateTicketCount() {
+            const ticketCount = document.getElementsByClassName('ticket').length;
+            const ticketCountElement = document.getElementById('ticket-count');
+            ticketCountElement.textContent = `Total tickets: ${ticketCount}`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+        updateTicketCount();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" type="image/x-icon" href="#" />
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <title>About</title>
+</head>
+<body>
+    <button id="dark-mode-toggle" onclick="toggleDarkMode()">
+        <i class="bi bi-moon-fill"></i>
+    </button>
+
+    <div class="sidebar">
+        <button id="sidebar-toggle" class="sidebar-toggle" onclick="toggleSidebar()">
+            <i class="bi bi-list"></i>
+        </button>
+        <div class="sidebar-content">
+            <a href="{% url 'login' %}">Inicio</a>
+            <a href="{% url 'about' %}">Info</a>
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <div class="container">
+        <div class="main-overlay">
+            <h1 class="mt-5 mb-4 text-center">Info.</h1>
+            <p>Sistema de tickets de la Clinica Independencia Norte, Arroyo Hondo. Para crear un usuario para consultas por favor llamar al (809) 385-2787.</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.querySelector('.overlay');
+
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        function toggleDarkMode() {
+            const body = document.querySelector('body');
+            body.classList.toggle('dark-mode');
+        }
+    </script>
+</body>
+</html>

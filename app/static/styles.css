@@ -1,0 +1,259 @@
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -200px;
+    height: 100vh;
+    width: 200px;
+    background-color: #f0f0f0;
+    transition: left 0.3s ease;
+    z-index: 2;
+}
+
+    .sidebar.active {
+        left: 0;
+    }
+
+.sidebar-content {
+    padding-top: 50px;
+}
+    .sidebar-content a:hover {
+        text-decoration: none;
+        background-color: #bdbbbb
+    }
+
+.sidebar a {
+    display: block;
+    padding: 10px 20px;
+    color: #000;
+    text-decoration: none;
+    border-bottom: 1px solid #555;
+}
+
+    .sidebar a:hover {
+        background-color: #bbb;
+        text-decoration: none;
+        color: inherit;
+    }
+
+.sidebar-toggle {
+    position: absolute;
+    top: 10px;
+    right: -40px;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    z-index: 999;
+}
+
+    .sidebar-toggle i {
+        font-size: 1.5rem;
+    }
+
+.container {
+    text-align: center;
+    margin-top: 70px;
+    z-index: 1;
+}
+
+#logout-button,
+#dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    padding: 10px;
+    background-color: transparent;
+    color: #000 !important;
+    border: none;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+#logout-button {
+    right: 20px;
+}
+
+#dark-mode-toggle {
+    right: 50px;
+}
+
+    #logout-button i,
+    #dark-mode-toggle i {
+        font-size: 1.5rem;
+    }
+
+
+body.dark-mode #dark-mode-toggle {
+    color: #fff !important;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.btn-primary {
+    color: #000 !important;
+    background-color: transparent !important;
+    border: 1px solid #000 !important;
+    border-radius: 50px !important;
+}
+
+    .btn-primary:hover {
+        background-color: #000 !important;
+        color: #fff !important;
+    }
+
+body.dark-mode .btn-primary {
+    color: #fff !important;
+    background-color: transparent !important;
+    border: 1px solid #fff !important;
+}
+
+    body.dark-mode .btn-primary:hover {
+        background-color: #fff !important;
+        color: #000 !important;
+    }
+
+.top-bar button {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+ul.ticket-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.counter {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.ticket-counter {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+    .ticket-counter p {
+        margin: 0;
+        font-size: 18px;
+    }
+
+.main-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    z-index: 1;
+    border-radius: 10px;
+    text-align: justify;
+}
+
+.overlay.clock {
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    display: inline-block;
+}
+
+.overlay.ticket-counter {
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    display: inline-block;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+label {
+    display: inline-block;
+    width: 120px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+input[type="text"],
+textarea,
+select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 200px;
+}
+
+textarea {
+    height: 100px;
+}
+
+body.dark-mode {
+    background-color: #000;
+    color: #fff;
+}
+
+    body.dark-mode .sidebar {
+        background-color: #333;
+    }
+
+        body.dark-mode .sidebar a {
+            color: #fff;
+        }
+
+            body.dark-mode .sidebar a:hover {
+                background-color: #555;
+            }
+
+    body.dark-mode .container {
+        color: #fff;
+    }
+
+    body.dark-mode .btn-primary {
+        color: #fff !important;
+        background-color: transparent !important;
+        border: 1px solid #fff !important;
+    }
+
+        body.dark-mode .btn-primary:hover {
+            background-color: #fff !important;
+            color: #000 !important;
+        }
+
+    body.dark-mode .overlay {
+        background-color: #333;
+        color: #fff;
+    }
+    body.dark-mode .main-overlay {
+        color: white;
+        background-color: #333;
+    }
